@@ -41,6 +41,7 @@
 
 <script>
 import { loginByUsername } from '@/api/login'
+import { setUser } from '@/utils/store'
 export default {
   data () {
     var validateSignAgreement = (rule, value, callback) => {
@@ -82,7 +83,8 @@ export default {
         const { password, name } = this.ruleForm
 
         const res = await loginByUsername(name, password)
-        if (res.code === 0) {
+        if (res.code === 200) {
+          setUser(res.data)
           this.$router.replace({ path: '/auth/index' })
         } else {
           this.$message({

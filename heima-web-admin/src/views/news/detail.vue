@@ -89,7 +89,7 @@ export default {
     },
     async operateForPass () {
       const { code, errorMessage } = await authPass({ id: this.detail.id, status: 4 })
-      if (code === 0) {
+      if (code === 200) {
         this.loadData()
         this.$message({ type: 'success', message: '操作成功！' })
       } else {
@@ -101,7 +101,7 @@ export default {
         const result = await this.showPrompt()
 
         const { code, errorMessage } = await authFail({ id: this.detail.id, status: 2, msg: result.value })
-        if (code === 0) {
+        if (code === 200) {
           this.loadData()
           this.$message({ type: 'success', message: '操作成功！' })
         } else {

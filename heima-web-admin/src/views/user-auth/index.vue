@@ -136,7 +136,7 @@ export default {
     },
     async operateForPass (id) {
       const { code, errorMessage } = await authPass({ id: id })
-      if (code === 0) {
+      if (code === 200) {
         this.getList()
         this.$message({ type: 'success', message: '操作成功' })
       } else {
@@ -148,7 +148,7 @@ export default {
         const result = await this.showPrompt()
 
         const { code, errorMessage } = await authFail({ id: id, msg: result.value })
-        if (code === 0) {
+        if (code === 200) {
           this.getList()
           this.$message({ type: 'success', message: '操作成功！' })
         } else {

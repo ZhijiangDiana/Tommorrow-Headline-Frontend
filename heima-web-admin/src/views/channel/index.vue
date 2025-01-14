@@ -145,7 +145,7 @@ export default {
       total: 0,
       listLoading: true,
       listQuery: {
-        name: undefined,
+        name: '',
         status: undefined,
         page: 1,
         size: 10
@@ -162,9 +162,6 @@ export default {
   methods: {
     async getList () {
       // el-input和el-select执行clear后值为''，主动转换为undefined
-      if (this.listQuery.name === '') {
-        this.listQuery.name = undefined
-      }
       if (this.listQuery.status === '') {
         this.listQuery.status = undefined
       }
@@ -195,7 +192,7 @@ export default {
     // TODO: 禁用提示用户
     async updateChannel (id, name, status) {
       const res = await updateData({ id: id, name: name, status: status })
-      if (res.code === 0) {
+      if (res.code === 200) {
         this.dialogFormVisible = false
         this.getList()
         this.$message({ type: 'success', message: '操作成功！' })
@@ -213,7 +210,7 @@ export default {
     },
     async doDelete (id) {
       const res = await delData(id)
-      if (res.code === 0) {
+      if (res.code === 200) {
         this.dialogFormVisible = false
         this.getList()
         this.$message({ type: 'success', message: '删除成功！' })

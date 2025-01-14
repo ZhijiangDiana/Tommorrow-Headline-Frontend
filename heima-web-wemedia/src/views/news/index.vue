@@ -228,7 +228,7 @@ export default {
       try {
         await this.showDeleteConfirm('文章')
         const temp = await deleteArticles(id)
-        if (temp.code === 0) {
+        if (temp.code === 200) {
           this.$message({ type: 'success', message: '删除成功!' })
           this.getList()
         } else {
@@ -241,7 +241,7 @@ export default {
     // 上下架
     async upOrDown (id, enable) {
       const temp = await upDownArticle({ id: id, enable: enable })
-      if (temp.code === 0) {
+      if (temp.code === 200) {
         this.$message({ type: 'success', message: '操作成功!' })
         this.getList()
       } else {

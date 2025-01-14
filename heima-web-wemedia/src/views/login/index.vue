@@ -81,7 +81,7 @@ export default {
         const { password, name } = this.ruleForm
 
         const res = await loginByUsername(name, password)
-        if (res.code === 0) {
+        if (res.code === 200) {
           this.$router.replace({ path: '/statistics/index' })
         } else {
           this.$message({

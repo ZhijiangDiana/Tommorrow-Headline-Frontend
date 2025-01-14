@@ -61,7 +61,7 @@ export default {
         await this.$refs.form.validate()
 
         const res = await updateData(this.form)
-        if (res.code === 0) {
+        if (res.code === 200) {
           this.syncDialogVisible = false
           this.$emit('refreshList')
           this.$message({ type: 'success', message: '操作成功！' })

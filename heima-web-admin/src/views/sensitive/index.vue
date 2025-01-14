@@ -86,7 +86,7 @@ export default {
       total: 0,
       listLoading: true,
       listQuery: {
-        name: undefined,
+        name: '',
         page: 1,
         size: 10
       },
@@ -102,10 +102,6 @@ export default {
   methods: {
     async getList () {
       // el-input和el-select执行clear后值为''，主动转换为undefined
-      if (this.listQuery.name === '') {
-        this.listQuery.name = undefined
-      }
-
       const res = await loadList(this.listQuery)
       if (res.code === 200) {
         this.list = res.data
@@ -138,7 +134,7 @@ export default {
     },
     async doDelete (id) {
       const res = await deleteData(id)
-      if (res.code === 0) {
+      if (res.code === 200) {
         this.getList()
         this.$message({ type: 'success', message: '操作成功！' })
       } else {

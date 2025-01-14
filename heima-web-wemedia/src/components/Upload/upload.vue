@@ -91,7 +91,7 @@ export default {
       fd.append('multipartFile', file, file.name)
 
       const result = await uploadImg(fd)
-      if (result.code === 0) {
+      if (result.code === 200) {
         this.$message({ message: '上传成功', type: 'success' })
         this.uploadImgUrl = result.data.url
         this.$emit('uploadSuccess', this.uploadImgUrl)

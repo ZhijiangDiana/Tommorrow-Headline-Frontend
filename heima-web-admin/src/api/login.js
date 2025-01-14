@@ -11,7 +11,7 @@ export function loginByUsername (name, password) {
     method: 'post',
     data
   }).then(res => {
-    if (res.code === 0) {
+    if (res.code === 200) {
       const temp = res.data
       setUser({ name: temp.user.name, photo: null, token: temp.token }) // 设置用户的个人数据
     }

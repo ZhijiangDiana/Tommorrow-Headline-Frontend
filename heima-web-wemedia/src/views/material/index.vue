@@ -107,7 +107,7 @@ export default {
       if (isCollected === 1) { isCollected = 0 } else { isCollected = 1 }
       // 取相反状态
       const result = await collectOrCancel(img.id, { isCollected: isCollected })
-      if (result.code === 0) {
+      if (result.code === 200) {
         img.isCollection = isCollected // 取相反状态
         this.$forceUpdate() // 强制更新
         this.$message({ type: 'success', message: '操作成功' })
@@ -121,7 +121,7 @@ export default {
         await this.showDeleteConfirm('素材')
 
         const { code, errorMessage } = await delImg(img.id)
-        if (code === 0) {
+        if (code === 200) {
           this.$message({ type: 'success', message: '删除成功' })
           this.getList()
         } else {

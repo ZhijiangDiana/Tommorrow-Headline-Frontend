@@ -201,7 +201,7 @@ export default {
     async operateForDownOrUp (id, enable) {
       const { code, errorMessage } = await downOrUp({ id: id, enable: enable })
 
-      if (code === 0) {
+      if (code === 200) {
         this.getList()
         this.$message({ type: 'success', message: '操作成功！' })
       } else {
