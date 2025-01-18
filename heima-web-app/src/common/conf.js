@@ -16,7 +16,7 @@ const  config = {
         load:{url:'article/api/v1/article/load/',sv:'app'},
         loadmore:{url:'article/api/v1/article/loadmore/',sv:'app'},
         loadnew:{url:'article/api/v1/article/loadnew/',sv:'app'},
-        loadchannels:{url:'admin/api/v1/channel/channels/',sv:'app'},
+        loadchannels:{url:'article/api/v1/channel/channels/',sv:'app'},
         /*load:{url:'api/v2/article/load/',sv:'article'},
         loadmore:{url:'api/v2/article/loadmore/',sv:'article'},
         loadnew:{url:'api/v2/article/loadnew/',sv:'article'},*/

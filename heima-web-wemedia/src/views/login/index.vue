@@ -52,8 +52,8 @@ export default {
     }
     return {
       ruleForm: {
-        name: 'itheima',
-        password: '123456',
+        name: 'admin',
+        password: 'admin',
         signAgreement: true
       },
       rules: {

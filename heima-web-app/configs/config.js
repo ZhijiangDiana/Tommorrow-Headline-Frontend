@@ -4,9 +4,6 @@ const ROOT = path.resolve(__dirname, '..');
 const ip = require('ip').address();
 // const ip = "192.168.26.158";
 
-const gatewayIp = "192.168.1.201"
-const gatewayPort = 51601
-
 const config = {
     root: ROOT,
     // webpack-dev-server
@@ -51,18 +48,22 @@ const config = {
         cssSourceMap: false,
         proxyTable: {
             '/server_85': {
-                target: 'http://' + gatewayIp + ':' + gatewayPort + '/', //源地址
+                target: 'http://192.168.1.201:51601/', //源地址
                 changeOrigin: true,
                 pathRewrite: {
                     '^/server_85': ''
                 }
             },
             '/app': {
-                target: 'http://' + gatewayIp + ':' + gatewayPort + '/', //源地址ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                target: 'http://192.168.1.201:51601/', //源地址ABCDEFGHIJKLMNOPQRSTUVWXYZ
                 changeOrigin: true, //改变源
                 pathRewrite: {
                     '^/app': ''
                 }
+            },
+            '/behavior': {
+                target: 'http://192.168.1.201:51601/',
+                changeOrigin: true,
             }
         },
         autoOpenBrowser: false,

@@ -13,7 +13,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/wemedia': {
-        target: 'http://localhost:6002/', // 源地址
+        target: 'http://192.168.1.201:51602/', // 源地址
         changeOrigin: true, // 改变源
         pathRewrite: {
           '^/wemedia/MEDIA': ''

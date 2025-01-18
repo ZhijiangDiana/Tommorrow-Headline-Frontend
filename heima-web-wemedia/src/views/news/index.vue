@@ -47,7 +47,7 @@
       <div v-if="list.length" class="content-card">
         <!-- TODO: hover时，按钮渐变动画 -->
         <div v-for="(item, index) in list" :key="index" class="item-card">
-          <el-image :src="item.images ? getImage(item) : require('@/assets/news/pic_nopic.png')">
+          <el-image :src="item.images ? item.images : require('@/assets/news/pic_nopic.png')">
             <div slot="placeholder" class="image-slot">
               <img src="@/assets/news/pic_loading@2x.png" />
             </div>

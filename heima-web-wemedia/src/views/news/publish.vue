@@ -352,7 +352,7 @@ export default {
         } else {
           result = await modifyArticles(this.newsId, params, data)
         }
-        if (result.code !== 0) {
+        if (result.code !== 200) {
           this.$message({ type: 'warning', message: result.errorMessage })
           return
         }
