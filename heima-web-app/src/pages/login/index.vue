@@ -76,7 +76,7 @@
                             this.$store.setToken(d.data.token)
                             this.$router.push("/home")
                         }else{
-                            modal.toast({ message:'用户或密码错误',duration:3})
+                            modal.toast({ message:d.errorMessage,duration:3})
                         }
                     }).catch(e=>{
                         console.log(e)
