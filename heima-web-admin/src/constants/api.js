@@ -26,6 +26,7 @@ export const API_SENSITIVE_LIST = '/service_6001/wemedia/api/v1/sensitive/list'
 export const API_SENSITIVE_SAVE = '/service_6001/wemedia/api/v1/sensitive/save'
 export const API_SENSITIVE_UPDATE = '/service_6001/wemedia/api/v1/sensitive/update'
 export const API_SENSITIVE_DELETE = '/service_6001/wemedia/api/v1/sensitive/del/'
+export const API_SENSITIVE_RELOAD = '/service_6001/wemedia/api/v1/sensitive/reload'
 
 export const API_COMMON_LIST = '/api/v1/admin/common/list' // 通用的列表加载器
 export const API_COMMON_UPDATE = '/api/v1/admin/common/update' // 通用的修改

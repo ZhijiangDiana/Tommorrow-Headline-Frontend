@@ -1,21 +1,24 @@
 <template>
   <div>
     <section class="filter">
-    <div class="filter-container">
-      <el-form ref="form" :inline="true" size="medium">
-        <el-form-item label="敏感词：">
-          <el-input
-            v-model="listQuery.name"
-            placeholder="请输入敏感词"
-            class="filter-item"
-            clearable
-            @input="resetPage"
-          />
-        </el-form-item>
-      </el-form>
-    </div>
-    <el-button type="success" icon="el-icon-circle-plus-outline" class="el-button--has-icon" @click="createSensitive">新建</el-button>
-  </section>
+      <div class="filter-container">
+        <el-form ref="form" :inline="true" size="medium">
+          <el-form-item label="敏感词：">
+            <el-input
+              v-model="listQuery.name"
+              placeholder="请输入敏感词"
+              class="filter-item"
+              clearable
+              @input="resetPage"
+            />
+          </el-form-item>
+        </el-form>
+      </div>
+      <div>
+        <el-button type="success" icon="el-icon-circle-plus-outline" class="el-button--has-icon" @click="createSensitive">新建</el-button>
+        <el-button type="alert" class="el-button--danger" @click="reloadSensitives">重启</el-button>
+      </div>
+    </section>
 
     <section class="result">
       <el-table
@@ -68,7 +71,7 @@ import Pagination from '@/components/pagination'
 import EmptyData from '@/components/empty-data'
 import SensitiveCreateDialog from './components/sensitive-create-dialog'
 import SensitiveEditDialog from './components/sensitive-edit-dialog'
-import { loadList, deleteData } from '@/api/sensitive'
+import { loadList, deleteData, reloadAcAuto } from '@/api/sensitive'
 
 export default {
   name: 'SensitiveList',
@@ -123,6 +126,27 @@ export default {
     editSensitive: function (sensitive) {
       this.editDialogVisible = true
       this.sensitive = sensitive
+    },
+    async reloadSensitives () {
+      try {
+        await this.$confirm('确认重启后端自动机，使修改的敏感词生效吗？', '重启', {
+          confirmButtonText: '重启',
+          confirmButtonClass: 'el-button--danger el-button--no-icon',
+          cancelButtonText: '取消',
+          cancelButtonClass: 'el-button--warning el-button--no-icon',
+          closeOnClickModal: false,
+          closeOnPressEscape: false
+        })
+        const res = await reloadAcAuto()
+        if (res.code === 200) {
+          this.getList()
+          this.$message({ type: 'success', message: '操作成功！' })
+        } else {
+          this.$message({ type: 'error', message: res.errorMessage })
+        }
+      } catch (e) {
+        this.$message({ type: 'info', message: '已取消重启' })
+      }
     },
     async delSensitive (id) {
       try {

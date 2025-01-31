@@ -1,5 +1,11 @@
 import Request from '@/utils/request'
-import { API_SENSITIVE_LIST, API_SENSITIVE_SAVE, API_SENSITIVE_UPDATE, API_SENSITIVE_DELETE } from '@/constants/api'
+import {
+  API_SENSITIVE_LIST,
+  API_SENSITIVE_SAVE,
+  API_SENSITIVE_UPDATE,
+  API_SENSITIVE_DELETE,
+  API_SENSITIVE_RELOAD
+} from '@/constants/api'
 
 export function loadList (data) {
   return new Request({
@@ -29,5 +35,12 @@ export function deleteData (id) {
   return new Request({
     url: API_SENSITIVE_DELETE + id,
     method: 'delete'
+  })
+}
+
+export function reloadAcAuto () {
+  return new Request({
+    url: API_SENSITIVE_RELOAD,
+    method: 'post'
   })
 }
