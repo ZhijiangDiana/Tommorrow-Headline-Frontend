@@ -1,8 +1,7 @@
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 // const ip = require('ip').address("WLAN");
-const ip = require('ip').address();
-// const ip = "192.168.26.158";
+const ip = "localhost";
 
 const config = {
     root: ROOT,
@@ -20,7 +19,7 @@ const config = {
         // Various Dev Server settings
         contentBase: ROOT,
         host: ip,
-        port: 8081,
+        port: 8080,
         historyApiFallback: true,
         open: true,
         watchContentBase: true,

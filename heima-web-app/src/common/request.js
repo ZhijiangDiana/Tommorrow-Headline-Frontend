@@ -1,4 +1,4 @@
-var querystring=require("querystring");
+var querystring=require("qs");
 var crypto =require('crypto-js')
 function Request() {
     this.stream=null;
