@@ -66,6 +66,7 @@
 import WxcTabPage from "@/compoents/tabs/home_tabs.vue";
 import {Utils} from "weex-ui";
 import config from './config';
+import Api from "@/apis/my_personal/api";
 
 export default {
   components: {WxcTabPage},
@@ -75,10 +76,10 @@ export default {
       tabPageHeight: 1145,
       isVerifiedStr: '未实名',
       user: {
-        name: "魏先生",
-        avatar: "http://121.40.25.50:9050/leadnews/default_avatar.jpeg",
+        name: "",
+        avatar: "",
         verified: true,
-        readingTime: "1小时23分钟",
+        readingTime: "11小时45分钟",
         posts: 1145,
         following: 1145,
         followers: 1145,
@@ -89,11 +90,18 @@ export default {
     this.tabPageHeight = Utils.env.getScreenHeight()-132;
     console.log("tabPageHeight: ",this.tabPageHeight)
 
-
+    Api.setVue(this);
+    this.getUserInfo()
   },
   methods: {
     getUserInfo() {
-
+      Api.loaduserinfo().then((d)=>{
+        console.log(JSON.stringify(d))
+        this.user = d.data
+        this.isVerifiedStr = this.user.verified ? "已实名" : "未实名"
+      }).catch((e)=>{
+        console.log(e)
+      })
     },
     // 0收藏 1历史 2作品
     // 1000消息通知 1001实名认证 1002私信 1003用户反馈 1004系统设置 1005关于

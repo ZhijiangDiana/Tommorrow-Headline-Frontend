@@ -49,6 +49,9 @@ const  config = {
         load_comment_repay: { url: 'comment/api/v1/comment_repay/load', sv: 'app' },
         like_comment_repay: { url: 'comment/api/v1/comment_repay/like', sv: 'app' },
         save_comment_repay: { url: 'comment/api/v1/comment_repay/save', sv: 'app' },
+				// ==========  my personal
+				load_userinfo: { url: 'user/api/v1/user/info', sv: 'app' },
+
         // 解决多访问地址的问题
         getBase : function(url){
             let sv = url.sv
