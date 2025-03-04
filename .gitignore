@@ -99,3 +99,5 @@ disk/
 /heima-web-wemedia/favicon.ico
 /heima-web-wemedia/src/style/
 /heima-web-admin/src/style/
+/heima-web-app/public/
+/heima-web-app/.temp/
