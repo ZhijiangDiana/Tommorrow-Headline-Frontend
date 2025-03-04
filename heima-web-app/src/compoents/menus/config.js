@@ -4,7 +4,8 @@ export default {
             title: '主页',
             icon:'\uf015',
             img:'/static/images/menus/sy1.png',
-            imgActive:'/static/images/menus_active/sy1.png'
+            imgActive:'/static/images/menus_active/sy1.png',
+            url: '/home'
         },
         {
             title: '视频',
@@ -24,7 +25,8 @@ export default {
             dot: true,
             icon:'\uf007',
             img:'/static/images/menus/wode.png',
-            imgActive:'/static/images/menus_active/wode.png'
+            imgActive:'/static/images/menus_active/wode.png',
+            url: '/my-personal'
         }
     ]
 }

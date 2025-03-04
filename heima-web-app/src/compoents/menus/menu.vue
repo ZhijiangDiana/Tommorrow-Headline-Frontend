@@ -148,9 +148,10 @@
             },
             setPage(page, url = null, animated = true) {
                 this.currentPage = page;
-                if(page>0){
-                    this.$config.noAction();
-                }
+                this.$router.push(url);
+                // if(page>0){
+                //     this.$config.noAction();
+                // }
             }
         }
     };

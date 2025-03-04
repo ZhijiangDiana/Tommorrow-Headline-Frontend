@@ -7,6 +7,7 @@ import Search from '@/pages/search/index'
 import Login from '@/pages/login/index'
 import Screen from '@/pages/load_screen/index'
 import SearchResult from '@/pages/search_result/index'
+import MyPersonal from "@/pages/my-personal/my-personal.vue";
 
 let routes = [
     {
@@ -17,6 +18,10 @@ let routes = [
                 path:'/home',
                 name:'Home',
                 component: Home
+            },{
+                path: '/my-personal',
+                name: 'my-personal',
+                component: MyPersonal
             }
         ]
     },{
