@@ -45,7 +45,23 @@ Api.prototype = {
 				})
 			})
 		}).catch(e=>{})
-	}
+	},
+	loaddata : function(params){
+		let url = this.vue.$config.urls.get('load_history');
+		return this.vue.$store.getEquipmentId().then(equipmentId=> {
+			return new Promise((resolve, reject) => {
+				this.vue.$request.post(url,params,{}).then((d)=>{
+					resolve(d);
+				}).catch((e)=>{
+					reject(e);
+				})
+			})
+		}).catch(e=>{
+			return new Promise((resolve, reject) => {
+				reject(e);
+			})
+		})
+	},
 }
 
 export default new Api()

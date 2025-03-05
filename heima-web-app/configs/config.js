@@ -1,7 +1,7 @@
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 // const ip = require('ip').address("WLAN");
-const ip = "localhost";
+const ip = "192.168.1.106";
 
 const config = {
     root: ROOT,

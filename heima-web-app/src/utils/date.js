@@ -29,6 +29,24 @@ FormatDate.prototype= {
         let date = new Date(time);
         return this.formatDate(date,'yyyy-MM-dd')
     },
+	formatCommon:function(dateString) {
+		const inputDate = new Date(dateString); // 将字符串转换为 Date 对象
+		const now = new Date();
+		const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		const yesterdayStart = new Date(todayStart.getTime() - 24 * 60 * 60 * 1000);
+
+		if (inputDate >= todayStart) {
+			// 如果是今天
+			return "今天 " + this.formatDate(inputDate, "hh:mm");
+		} else if (inputDate >= yesterdayStart) {
+			// 如果是昨天
+			return "昨天 " + this.formatDate(inputDate, "hh:mm");
+		} else {
+			// 其余时间
+			return this.formatDate(inputDate, "MM-dd hh:mm");
+		}
+	},
+
     diffTime:function(time){
         if(time.length==10){
             time = parseInt(time)*1000;

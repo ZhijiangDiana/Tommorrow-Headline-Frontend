@@ -9,6 +9,7 @@ import Screen from '@/pages/load_screen/index'
 import SearchResult from '@/pages/search_result/index'
 import MyPersonal from "@/pages/my-personal/my-personal.vue";
 import FollowerFollowing from "@/pages/my-personal/follower_following/follower-following.vue";
+import History from "@/pages/my-personal/history/history.vue";
 
 let routes = [
     {
@@ -56,7 +57,11 @@ let routes = [
 				path: '/my-personal/follower_following',
 				name: 'follower_following',
 				component: FollowerFollowing
-		}
+		},{
+		path: '/my-personal/history',
+		name: 'history',
+		component: History
+	}
 ]
 
 export default routes;

@@ -1,7 +1,7 @@
 <template>
     <wxc-minibar :title="this.text"
                  :background-color="backgroundColor"
-                 text-color="#FFFFFF"
+                 text-color="#000000"
                  :useDefaultReturn="useDefaultReturn"
                  @wxcMinibarLeftButtonClicked="minibarLeftButtonClick"
                  @wxcMinibarRightButtonClicked="minibarRightButtonClick">
@@ -28,6 +28,7 @@
             }
         },
         mounted(){
+          console.log(`left-text: ${this.text}`)
             //this.backgroundColor = this.$config.style.main_bg;
         },
         computed:{
