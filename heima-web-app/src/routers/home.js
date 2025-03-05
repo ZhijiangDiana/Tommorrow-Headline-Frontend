@@ -8,6 +8,7 @@ import Login from '@/pages/login/index'
 import Screen from '@/pages/load_screen/index'
 import SearchResult from '@/pages/search_result/index'
 import MyPersonal from "@/pages/my-personal/my-personal.vue";
+import FollowerFollowing from "@/pages/my-personal/follower_following/follower-following.vue";
 
 let routes = [
     {
@@ -51,7 +52,11 @@ let routes = [
         name: 'search_result',
         component:SearchResult,
         props:true
-    }
+    },{
+				path: '/my-personal/follower_following',
+				name: 'follower_following',
+				component: FollowerFollowing
+		}
 ]
 
 export default routes;
