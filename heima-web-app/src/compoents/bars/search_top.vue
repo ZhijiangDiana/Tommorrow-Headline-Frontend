@@ -1,5 +1,6 @@
 <template>
     <div class="bar_bg">
+      <image class="back" src="/static/images/buttons/fanhui.png" @click="back"/>
         <Search type="search"
                 autofocus="autofocus"
                 @onSubmit="onSubmit"
@@ -60,6 +61,11 @@
         color: #ffffff;
         font-size: 32px;
         padding:0px 0px 0px 20px ;
+    }
+    .back {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
     }
     .omg{
         width: 40px;

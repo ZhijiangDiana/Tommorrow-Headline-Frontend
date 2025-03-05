@@ -18,21 +18,21 @@
                     </div>
                 </template>
             </div>
-            <Title title="大家都在搜" :icon="icon.other"/>
-            <div class="hot-body">
-                <div class="item">
-                    <HotCell title="长宁4.8级地震" tip="精"/>
-                    <HotCell title="长宁4.8级地震"/>
-                </div>
-                <div class="item">
-                    <HotCell title="长宁4.8级地震" tip="荐"/>
-                    <HotCell title="长宁4.8级地震"/>
-                </div>
-                <div class="item">
-                    <HotCell title="长宁4.8级地震"/>
-                    <HotCell title="长宁4.8级地震" tip="热"/>
-                </div>
-            </div>
+<!--            <Title title="大家都在搜" :icon="icon.other"/>-->
+<!--            <div class="hot-body">-->
+<!--                <div class="item">-->
+<!--                    <HotCell title="长宁4.8级地震" tip="精"/>-->
+<!--                    <HotCell title="长宁4.8级地震"/>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <HotCell title="长宁4.8级地震" tip="荐"/>-->
+<!--                    <HotCell title="长宁4.8级地震"/>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <HotCell title="长宁4.8级地震"/>-->
+<!--                    <HotCell title="长宁4.8级地震" tip="热"/>-->
+<!--                </div>-->
+<!--            </div>-->
             <Title title="大家都在搜" :icon="icon.other"/>
             <div class="hot-body">
                 <div class="item">
