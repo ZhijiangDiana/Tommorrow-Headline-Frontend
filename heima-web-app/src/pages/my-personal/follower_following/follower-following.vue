@@ -1,6 +1,6 @@
 <template>
   <div class="follow-list" @touchmove.stop>
-    <common_top_bar></common_top_bar>
+    <common_top_bar text="我的好友"></common_top_bar>
     <div class="tabs">
       <span :class="{'active': activeTab === 'follow'}" @click="switchPage(0)">关注</span>
       <span :class="{'active': activeTab === 'fans'}" @click="switchPage(1)">粉丝</span>
@@ -27,10 +27,6 @@ export default {
   components: {Common_top_bar},
   data() {
     return {
-      entryPage: {
-        type: Number,
-        default: 0
-      },
       activeTab: 'follow',
       users: [],
       followers: [
@@ -85,18 +81,19 @@ export default {
   },
   created() {
     Api.setVue(this);
+    // 获取关注和粉丝列表
     // 0关注 1粉丝
-    this.entryPage = this.$route.query.type;
-    // TODO 获取关注和粉丝列表
-    this.getFanFollowingList()
+    this.getFanFollowingList(this.$route.query.type)
   },
   methods: {
     switchPage(page) {
       // 0关注列表 1粉丝列表
-      if (page === 0) {
+      if (page == 0) {
+        // console.log("切换到followings")
         this.activeTab = 'follow';
         this.users = this.followings;
       } else {
+        // console.log("切换到fans")
         this.activeTab = 'fans';
         this.users = this.followers;
       }
@@ -111,17 +108,20 @@ export default {
       if (user.isMutual) return '互相关注';
       return '关注';
     },
-    getFanFollowingList() {
+    getFanFollowingList(firstPage) {
       Api.loadUserFans().then((d)=>{
-        console.log(JSON.stringify(d))
+        // console.log(JSON.stringify(d))
         this.followers = d.data
+        // console.log(`fans: ${firstPage}`)
+        this.switchPage(firstPage)
       }).catch((e)=>{
         console.log(e)
       })
       Api.loadUserFollowing().then((d)=>{
-        console.log(JSON.stringify(d))
+        // console.log(JSON.stringify(d))
         this.followings = d.data
-        this.switchPage(this.entryPage)
+        // console.log(`following: ${firstPage}`)
+        this.switchPage(firstPage)
       }).catch((e)=>{
         console.log(e)
       })
