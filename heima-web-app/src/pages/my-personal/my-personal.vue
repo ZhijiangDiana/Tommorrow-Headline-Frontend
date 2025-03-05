@@ -23,11 +23,11 @@
         <div class="number">{{ user.posts }}</div>
         <div class="label">动态</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" @click="goTo(10)">
         <div class="number">{{ user.following }}</div>
         <div class="label">关注</div>
       </div>
-      <div class="stat-item">
+      <div class="stat-item" @click="goTo(11)">
         <div class="number">{{ user.followers }}</div>
         <div class="label">粉丝</div>
       </div>
@@ -104,10 +104,21 @@ export default {
       })
     },
     // 0收藏 1历史 2作品
+    // 10关注 11粉丝
     // 1000消息通知 1001实名认证 1002私信 1003用户反馈 1004系统设置 1005关于
     goTo(page) {
-      console.log(`跳转到 ${this.route[page]}`);
-
+      const url = this.route[page]
+      console.log(`跳转到 ${ url }`);
+      if (page === 10 || page === 11) {
+        this.$router.push({
+          path: url,
+          query: {
+            type: page === 10 ? 0 : 1
+          }
+        })
+      } else {
+        this.$router.push(url)
+      }
     },
   }
 };

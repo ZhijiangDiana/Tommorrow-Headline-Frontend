@@ -51,6 +51,8 @@ const  config = {
         save_comment_repay: { url: 'comment/api/v1/comment_repay/save', sv: 'app' },
 				// ==========  my personal
 				load_userinfo: { url: 'user/api/v1/user/info', sv: 'app' },
+			load_user_fans: { url: 'user/api/v1/user/fans', sv: 'app' },
+			load_user_following: { url: 'user/api/v1/user/following', sv: 'app' },
 
         // 解决多访问地址的问题
         getBase : function(url){

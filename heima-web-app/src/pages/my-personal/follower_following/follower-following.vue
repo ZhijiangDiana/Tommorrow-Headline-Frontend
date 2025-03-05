@@ -10,7 +10,7 @@
         <img :src="user.avatar" class="avatar" />
         <div class="info">
           <div class="name">{{ user.name }}</div>
-          <div class="fans-count">粉丝数：{{ user.fans }}</div>
+          <div class="description">{{ user.description }}</div>
         </div>
         <button :class="getButtonClass(user)" @click="toggleFollow(user)">{{ getButtonText(user) }}</button>
       </div>
@@ -21,66 +21,74 @@
 <script>
 
 import Common_top_bar from "@/compoents/bars/common_top_bar.vue";
+import Api from "@/apis/my_personal/api";
 
 export default {
   components: {Common_top_bar},
   data() {
     return {
+      entryPage: {
+        type: Number,
+        default: 0
+      },
       activeTab: 'follow',
       users: [],
       followers: [
-        {
-          name: '这是粉丝列表',
-          fans: 1145,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: false,
-          isMutual: false
-        },{
-          name: '马+7',
-          fans: 250,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: false,
-          isMutual: false
-        },{
-          name: '柿本广大',
-          fans: 4444,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: false,
-          isMutual: false
-        }
+        // {
+        //   name: '这是粉丝列表',
+        //   description: "111111",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: false,
+        //   isMutual: false
+        // },{
+        //   name: '马+7',
+        //   description: "喜欢假期，被你发现",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: false,
+        //   isMutual: false
+        // },{
+        //   name: '柿本广大',
+        //   description: "没亩玩意别惦记着你那mujica了",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: false,
+        //   isMutual: false
+        // }
       ],
       followings: [
-        {
-          name: '这是关注列表',
-          fans: 1145,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: true,
-          isMutual: false
-        },{
-          name: '时代少年团',
-          fans: 250,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: true,
-          isMutual: false
-        },{
-          name: '滚木',
-          fans: 4444,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: true,
-          isMutual: false
-        },{
-          name: '电棍',
-          fans: 4444,
-          avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
-          isFollowing: true,
-          isMutual: false
-        }
+        // {
+        //   name: '这是关注列表',
+        //   description: "111111",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: true,
+        //   isMutual: false
+        // },{
+        //   name: '时代少年团',
+        //   description: "时代少年团，我们喜欢你~",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: true,
+        //   isMutual: false
+        // },{
+        //   name: '滚木',
+        //   description: "null",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: true,
+        //   isMutual: false
+        // },{
+        //   name: '电棍',
+        //   description: "唉你怎么亖了",
+        //   avatar: 'http://121.40.25.50:9050/leadnews/default_avatar.jpeg',
+        //   isFollowing: true,
+        //   isMutual: false
+        // }
       ]
     };
   },
   created() {
-    this.switchPage(0)
+    Api.setVue(this);
+    // 0关注 1粉丝
+    this.entryPage = this.$route.query.type;
     // TODO 获取关注和粉丝列表
+    this.getFanFollowingList()
   },
   methods: {
     switchPage(page) {
@@ -102,6 +110,21 @@ export default {
       if (user.isFollowing) return '已关注';
       if (user.isMutual) return '互相关注';
       return '关注';
+    },
+    getFanFollowingList() {
+      Api.loadUserFans().then((d)=>{
+        console.log(JSON.stringify(d))
+        this.followers = d.data
+      }).catch((e)=>{
+        console.log(e)
+      })
+      Api.loadUserFollowing().then((d)=>{
+        console.log(JSON.stringify(d))
+        this.followings = d.data
+        this.switchPage(this.entryPage)
+      }).catch((e)=>{
+        console.log(e)
+      })
     },
     toggleFollow(user) {
       user.isFollowing = !user.isFollowing;
@@ -162,7 +185,7 @@ export default {
 .name {
   font-size: 25px;
 }
-.fans-count {
+.description {
   font-size: 25px;
   color: #999;
 }
