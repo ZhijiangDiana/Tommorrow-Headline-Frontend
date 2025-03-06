@@ -1,7 +1,7 @@
 const commonConfig = require('./webpack.common.conf');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 // tools
-const ip = require('ip').address();
+const ip = require('ip').address("以太网 2");
 const os = require('os');
 const chalk = require('chalk');
 const path = require('path');

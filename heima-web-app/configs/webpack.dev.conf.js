@@ -5,8 +5,8 @@ const chalk = require('chalk');
 const path = require('path');
 const webpack = require('webpack');
 
-const ip = require('ip').address();
-// const ip = require('ip').address("WLAN");
+// const ip = require('ip').address();
+const ip = require('ip').address("以太网 2");
 // const ip = "172.16.17.191";
 
 /**
