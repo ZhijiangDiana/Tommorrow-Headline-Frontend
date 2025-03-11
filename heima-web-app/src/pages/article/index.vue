@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <TopBar />
+    <TopBar text="文章"/>
     <web ref="webview" class="webview" :src="staticUrl"></web>
   </div>
 </template>

@@ -5,7 +5,7 @@
                 <!-- <text class="title" :style="flexStyle(data.h_title)">{{formatTitle(data.h_title)}}</text> -->
                 <text class="title" v-html="data.title">1111</text>
                 <div class="tags">
-                    <text class="tags-text tags-icon">置顶</text>
+<!--                    <text class="tags-text tags-icon">置顶</text>-->
                     <text class="tags-text">{{data.source}}</text>
                     <text class="tags-text">评论 {{data.commit}}</text>
                 </div>

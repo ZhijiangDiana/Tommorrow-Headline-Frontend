@@ -1,19 +1,20 @@
 <template>
   <div class="wrapper" @touchmove.stop>
-    <div class="top-body"><Home_Bar/></div>
+    <div class="top-body" @touchmove.stop><Home_Bar/></div>
     <div class="content-body" @touchmove.stop>
       <wxc-tab-page ref="wxc-tab-page" :tab-titles="tabTitles" :tab-styles="tabStyles" title-type="text" :tab-page-height="tabPageHeight" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
-        <list @touchmove.self v-for="(v,index) in tabList" :key="index" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height-12) + 'px' }">
+        <list v-for="(v,index) in tabList" :key="index" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height-12) + 'px' }">
           <!-- 下来刷新最新 -->
           <refresh @refresh='loadnew'  :display="shownew?'show':'hide'" class="loading">
             <loading-indicator class="loading-icon"></loading-indicator>
             <text class="loading-text">{{load_new_text}}</text>
           </refresh>
           <!-- 列表项，并绑定显示事件 -->
+          <!-- TODO 列表需要滚动一下才能加载 -->
           <cell v-for="(item,key) in v" class="cell" @appear="show(item.id)" :key="key">
             <wxc-pan-item :ext-id="'1-' + (v) + '-' + (key)" @wxcPanItemClicked="wxcPanItemClicked(item)" @wxcPanItemPan="wxcPanItemPan">
               <Item0 v-if="item.type==0" :data="item"/>
-              <Item1 v-if="item.type==1" :data="item"/>
+              <Item1 v-if="item.type==1" :data="item"/>  <!-- type==1 -->
                 <Item3 v-if="item.type==2" :data="item"/>
               <Item3 v-if="item.type==3" :data="item"/>
             </wxc-pan-item>

@@ -1,6 +1,6 @@
 <template>
     <div class="bar_bg">
-        <text class="icon" @click="back">&#xf104;</text>
+        <image class="back" src="/static/images/buttons/fanhui.png" @click="back"/>
         <Search
                 :icon="icon"
                 @onSubmit="onSubmit"
@@ -9,7 +9,8 @@
                 :placeholder="placeholder"
                 right-width="30"
                 left-width="30" />
-        <text class="icon" @click="home">&#xf00d;</text>
+      <image class="home" @click="home" src="/static/images/buttons/close.png"/>
+<!--        <text class="icon" @click="home">&#xf00d;</text>-->
     </div>
 </template>
 
@@ -58,6 +59,16 @@
         padding: 7px 15px 7px 20px;
         align-items: center;
         }
+    .back {
+      width: 32px;
+      height: 32px;
+      margin-left: 15px;
+    }
+    .home {
+      width: 40px;
+      height: 37px;
+      margin-right: 15px;
+    }
     .icon{
         color: #111111;
         font-size: 42px;

@@ -63,8 +63,8 @@
         padding:0px 0px 0px 20px ;
     }
     .back {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       margin-right: 15px;
     }
     .omg{

@@ -1,11 +1,11 @@
 <template>
-    <wxc-minibar title=""
+    <wxc-minibar :title="text"
                  :background-color="backgroundColor"
-                 text-color="#FFFFFF"
+                 text-color="#000000"
                  :useDefaultReturn="useDefaultReturn"
+                 left-button="/static/images/buttons/fanhui.png"
                  @wxcMinibarLeftButtonClicked="minibarLeftButtonClick"
                  @wxcMinibarRightButtonClicked="minibarRightButtonClick">
-        <text class="icon" slot="left" style="text-align: left">&#xf104;</text>
         <text class="icon" slot="right" style="text-align: left" @click="noAction">···</text>
     </wxc-minibar>
 </template>
