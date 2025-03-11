@@ -13,11 +13,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/service_6001': {
-        target: 'http://192.168.1.201:6001/', // 源地址
-        changeOrigin: true, // 改变源
-        pathRewrite: {
-          '^/service_6001': ''
-        }
+        target: 'http://192.168.1.201:8803/', // 源地址
+        changeOrigin: true // 改变源
+        // pathRewrite: {
+        //   '^/service_6001': ''
+        // }
       }
     },
 

@@ -47,21 +47,21 @@ const config = {
         cssSourceMap: false,
         proxyTable: {
             '/server_85': {
-                target: 'http://192.168.1.201:51601/', //源地址
+                target: 'http://192.168.1.201:8801/', //源地址
                 changeOrigin: true,
-                pathRewrite: {
-                    '^/server_85': ''
-                }
+                // pathRewrite: {
+                //     '^/server_85': ''
+                // }
             },
             '/app': {
-                target: 'http://192.168.1.201:51601/', //源地址ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                target: 'http://192.168.1.201:8801/', //源地址ABCDEFGHIJKLMNOPQRSTUVWXYZ
                 changeOrigin: true, //改变源
-                pathRewrite: {
-                    '^/app': ''
-                }
+                // pathRewrite: {
+                //     '^/app': ''
+                // }
             },
             '/behavior': {
-                target: 'http://192.168.1.201:51601/',
+                target: 'http://192.168.1.201:8801/',
                 changeOrigin: true,
             }
         },
