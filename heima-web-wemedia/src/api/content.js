@@ -1,15 +1,5 @@
 import Request from '@/utils/request'
-import { API_ARTICLES_INFO, API_STATISTICS_NEWS, API_ARTICLES_UPDOWN, API_SEARCHARTICELS, API_ARTICLES_DELETE } from '@/constants/api'
-
-// 获取统计数据
-export function getNewsStatistics (data) {
-  return Request({
-    url: API_STATISTICS_NEWS,
-    method: 'post',
-    params: {},
-    data: data
-  })
-}
+import { API_ARTICLES_INFO, API_ARTICLES_UPDOWN, API_SEARCHARTICELS, API_ARTICLES_DELETE } from '@/constants/api'
 
 export function getArticleById (articlesId) {
   return Request({

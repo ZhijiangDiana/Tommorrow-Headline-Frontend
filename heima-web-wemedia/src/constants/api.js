@@ -27,5 +27,6 @@ export const API_FANS_AVATAR = '/api/v1/user_fans/avatar' // 获取粉丝头像
 export const API_CHANGE_FOLLOW_STATE = '/api/v1/user_fans/change_follow_state' // 改变粉丝关注状态
 export const API_GET_FANS_STATISTIC = '/api/v1/statistics/fans' // 粉丝统计数据
 
-export const API_STATISTICS_NEWS = '/api/v1/statistics/news' // 图文统计
-export const API_STATISTICS_PORTRAIT = '/api/v1/statistics/portrait' // 画像统计
+export const API_STATISTICS_OVERALL = '/wemedia/api/v1/statistics/overall' // 统计总览
+export const API_STATISTICS_NEWS = '/wemedia/api/v1/statistics/news' // 图文统计
+export const API_STATISTICS_PORTRAIT = '/wemedia/api/v1/statistics/portrait' // 画像统计
