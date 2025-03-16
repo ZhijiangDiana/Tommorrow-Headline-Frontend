@@ -10,7 +10,7 @@
         :body-style="{ padding: '0px' }"
         shadow="hover"
       >
-        <img class="image" :src="item.avatar" />
+        <img class="image" :src="item.image" />
         <div class="name">{{ item.name }}</div>
         <div class="operate">
           <div class="item">
@@ -22,124 +22,65 @@
         </div>
       </el-card>
     </div>
-    <el-button class="more">点击查看更多</el-button>
+    <el-button class="more" @click="loadMoreFansList" v-if="hasMore">
+      {{ hasMore ? "点击查看更多" : "没有更多了" }}
+    </el-button>
   </div>
 </template>
 
 <script>
 import ManageTabBar from '../fans-statistics/components/ManageTabBar'
-
-const fans01Png = require('@/assets/fans/fans01.png')
-const fans02Png = require('@/assets/fans/fans02.png')
-const fans03Png = require('@/assets/fans/fans03.png')
-const fans04Png = require('@/assets/fans/fans04.png')
-const fans05Png = require('@/assets/fans/fans05.png')
-const fans06Png = require('@/assets/fans/fans06.png')
-const fans07Png = require('@/assets/fans/fans07.png')
-const fans08Png = require('@/assets/fans/fans08.png')
-const fans09Png = require('@/assets/fans/fans09.png')
-const fans10Png = require('@/assets/fans/fans10.png')
-const fans11Png = require('@/assets/fans/fans11.png')
-const fans12Png = require('@/assets/fans/fans12.png')
-const fans13Png = require('@/assets/fans/fans13.png')
-const fans14Png = require('@/assets/fans/fans14.png')
-const fans15Png = require('@/assets/fans/fans15.png')
+import { getFanList } from '@/api/statistic'
 
 export default {
   name: 'FansList',
   data () {
     return {
-      fansList: [
-        {
-          name: 'Tyler Pearson',
-          avatar: fans01Png
-        },
-        {
-          name: 'Ophelia Bridges',
-          avatar: fans02Png
-        },
-        {
-          name: 'Tyler Pearson',
-          avatar: fans03Png
-        },
-        {
-          name: 'Ophelia Bridges',
-          avatar: fans04Png
-        },
-        {
-          name: 'Ophelia Bridges',
-          avatar: fans05Png
-        },
-        {
-          name: '覃妹艺',
-          avatar: fans06Png
-        },
-        {
-          name: '尼芳',
-          avatar: fans07Png
-        },
-        {
-          name: '苑婕',
-          avatar: fans08Png
-        },
-        {
-          name: '辛翰力',
-          avatar: fans09Png
-        },
-        {
-          name: '空黛枫',
-          avatar: fans10Png
-        },
-        {
-          name: '阎澜菁',
-          avatar: fans11Png
-        },
-        {
-          name: '扈霄芬',
-          avatar: fans12Png
-        },
-        {
-          name: '蓬天宜',
-          avatar: fans13Png
-        },
-        {
-          name: '字妍',
-          avatar: fans14Png
-        },
-        {
-          name: '寇功宁',
-          avatar: fans15Png
-        },
-        {
-          name: 'Tyler Pearson',
-          avatar: fans01Png
-        },
-        {
-          name: 'Ophelia Bridges',
-          avatar: fans02Png
-        },
-        {
-          name: 'Tyler Pearson',
-          avatar: fans03Png
-        },
-        {
-          name: 'Ophelia Bridges',
-          avatar: fans04Png
-        },
-        {
-          name: 'Ophelia Bridges',
-          avatar: fans05Png
-        }
-      ],
+      fansList: [],
       params: {
         page: 1,
         size: 10
       },
-      total: 0
+      total: 0,
+      hasMore: true
     }
   },
   components: {
     ManageTabBar
+  },
+  created () {
+    this.loadNewFansList()
+  },
+  methods: {
+    loadMoreFansList () {
+      this.pageGetFanList()
+    },
+    loadNewFansList () {
+      this.params.page = 1
+      this.fansList = []
+      this.pageGetFanList()
+    },
+    pageGetFanList () {
+      getFanList(this.params).then(res => {
+        if (res.code === 200) {
+          this.fansList = this.fansList.concat(res.data)
+          // console.log(this.fansList)
+          this.total = res.total
+          this.hasMore = res.data.length > 0
+          this.params.page += 1
+          // console.log(res.data.length)
+          if (this.hasMore) {
+            this.$message({ type: 'success', message: '操作成功' })
+          } else {
+            this.$message({ type: 'warning', message: '没有更多了' })
+          }
+        } else {
+          this.$message({ type: 'error', message: res.errorMessage })
+        }
+      }).catch(err => {
+        this.$message({ type: 'error', message: err.message })
+      })
+    }
   }
 }
 </script>

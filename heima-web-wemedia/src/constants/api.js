@@ -30,3 +30,6 @@ export const API_GET_FANS_STATISTIC = '/api/v1/statistics/fans' // 粉丝统计�
 export const API_STATISTICS_OVERALL = '/wemedia/api/v1/statistics/overall' // 统计总览
 export const API_STATISTICS_NEWS = '/wemedia/api/v1/statistics/news' // 图文统计
 export const API_STATISTICS_PORTRAIT = '/wemedia/api/v1/statistics/portrait' // 画像统计
+
+export const API_FANS_LIST = '/wemedia/api/v1/fans/page'
+export const API_FOLLOW_FANS = '/wemedia/api/v1/fans/follow'

@@ -21,9 +21,6 @@ export default {
         path: '/fans/index',
         title: '粉丝概况'
       }, {
-        path: '/fans/portrait',
-        title: '粉丝画像'
-      }, {
         path: '/fans/list',
         title: '粉丝列表'
       }]
