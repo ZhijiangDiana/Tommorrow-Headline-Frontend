@@ -11,6 +11,7 @@ import MyPersonal from "@/pages/my-personal/my-personal.vue";
 import FollowerFollowing from "@/pages/my-personal/follower_following/follower-following.vue";
 import History from "@/pages/my-personal/history/history.vue";
 import Star from "@/pages/my-personal/star/star.vue";
+import RegisterPage from "@/pages/login/register/register-page.vue";
 
 let routes = [
     {
@@ -36,6 +37,10 @@ let routes = [
         name: 'login',
         component:Login
     },{
+		path:'/register',
+		name: 'register',
+		component: RegisterPage
+	},{
         path:'/article',
         name: 'article-info',
         component:Article,

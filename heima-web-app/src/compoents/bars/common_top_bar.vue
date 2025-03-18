@@ -3,9 +3,10 @@
                  :background-color="backgroundColor"
                  text-color="#000000"
                  :useDefaultReturn="useDefaultReturn"
+                 left-button="/static/images/buttons/fanhui.png"
                  @wxcMinibarLeftButtonClicked="minibarLeftButtonClick"
                  @wxcMinibarRightButtonClicked="minibarRightButtonClick">
-        <text class="icon" slot="left" style="text-align: left">&#xf104;</text>
+        <text v-if="hasRightButton" class="icon" slot="left" style="text-align: left">&#xf104;</text>
     </wxc-minibar>
 </template>
 
@@ -19,6 +20,10 @@
           text:{
               type:String,
               default:'文章标题'
+          },
+          hasRightButton: {
+            type:Boolean,
+            default: false
           }
         },
         data:()=>{

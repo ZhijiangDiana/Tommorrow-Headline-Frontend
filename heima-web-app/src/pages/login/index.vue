@@ -22,7 +22,7 @@
             <text class="button" @click="login"> 开始使用 </text>
             <div class="more">
                 <!--<text class="go-register" @click="tip">密码登录</text>-->
-                <text class="go-register" @click="tip">手机号注册</text>
+                <text class="go-register" @click="register">手机号注册</text>
                 <text class="empty"></text>
                 <text class="go-register" @click="noLogin">不登录，先看看</text>
                <!-- <router-link to="/home">
@@ -94,7 +94,10 @@
                 }).catch(e=>{
                     console.log(e)
                 })
-            }
+            },
+          register:function(){
+              this.$router.push('/register')
+          }
         }
     }
 </script>

@@ -41,6 +41,9 @@ const  config = {
         user_follow:{url:'user/api/v1/user/user_follow/',sv:'app'},
         // ==========  login
         user_login:{url:'user/api/v1/login/login_auth/',sv:'app'},
+			user_login_by_code:{url:'user/api/v1/login/login_by_code',sv:'app'},
+			send_code: {url:'user/api/v1/login/send_verify_code',sv:'app'},
+			user_register: {url:'user/api/v1/registry/register',sv:'app'},
         // ==========  comment
         load_comment: { url: 'comment/api/v1/comment/load', sv: 'app' },
         like_comment: { url: 'comment/api/v1/comment/like', sv: 'app' },
