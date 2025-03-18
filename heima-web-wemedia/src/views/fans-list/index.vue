@@ -14,7 +14,7 @@
         <div class="name">{{ item.name }}</div>
         <div class="operate">
           <div class="item">
-            <el-button class="follow">关注</el-button>
+            <el-button class="follow" @click="switchFollowFans(index)">{{ item.isFollowing ? "已关注" : "关注" }}</el-button>
           </div>
           <div class="item">
             <el-button class="contact">私信</el-button>
@@ -30,7 +30,7 @@
 
 <script>
 import ManageTabBar from '../fans-statistics/components/ManageTabBar'
-import { getFanList } from '@/api/statistic'
+import { followFans, getFanList } from '@/api/statistic'
 
 export default {
   name: 'FansList',
@@ -40,6 +40,10 @@ export default {
       params: {
         page: 1,
         size: 10
+      },
+      followParams: {
+        authorId: 0,
+        operation: 0
       },
       total: 0,
       hasMore: true
@@ -74,6 +78,20 @@ export default {
           } else {
             this.$message({ type: 'warning', message: '没有更多了' })
           }
+        } else {
+          this.$message({ type: 'error', message: res.errorMessage })
+        }
+      }).catch(err => {
+        this.$message({ type: 'error', message: err.message })
+      })
+    },
+    switchFollowFans (index) {
+      this.followParams.authorId = this.fansList[index].id
+      this.followParams.operation = this.fansList[index].isFollowing ? 1 : 0 // 0是关注 1是取消关注
+      followFans(this.followParams).then(res => {
+        if (res.code === 200) {
+          this.fansList[index].isFollowing ^= 1
+          this.$message({ type: 'success', message: '操作成功' })
         } else {
           this.$message({ type: 'error', message: res.errorMessage })
         }
