@@ -18,4 +18,4 @@ const App = require('@/main.vue');
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({el: '#root', router}, App));
 router.push('/screen');
-// router.push('/my-personal/history');  // 测试用
+// router.push('/my-personal/realname');  // 测试用

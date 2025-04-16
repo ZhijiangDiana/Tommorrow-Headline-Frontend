@@ -57,6 +57,12 @@ const  config = {
 			load_user_fans: { url: 'user/api/v1/user/fans', sv: 'app' },
 			load_user_following: { url: 'user/api/v1/user/following', sv: 'app' },
 			load_history:{url:'article/api/v1/history/load',sv:'app'},
+			// ==========  realname
+			reco_id_card: {url:'user/api/v1/realname/recoIdCard',sv:'app'},
+			upload_image: {url:'user/api/v1/user/uploadFile',sv:'app'},
+			get_realname_status: {url:'user/api/v1/realname/getStatus',sv:'app'},
+			restart_realname: {url:'user/api/v1/realname/restart',sv:'app'},
+			submit_realname: {url:'user/api/v1/realname/submit',sv:'app'},
 
         // 解决多访问地址的问题
         getBase : function(url){

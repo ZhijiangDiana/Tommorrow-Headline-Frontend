@@ -76,6 +76,48 @@ Request.prototype={
             })
         });
     },
+	multipart : function(path,body,params){
+		let time = new Date().getTime()
+		if(params==undefined)params={}
+		else{
+			path = path+"?"+querystring.stringify(params)
+		}
+		params['t']=time
+		return this.store.getToken().then(token=>{
+			return new Promise((resolve, reject) => {
+				let temp = {
+					method: 'POST',
+					headers: {
+						'token': token,
+						't': '' + time,
+					},
+					body: body
+				}
+				fetch(path, temp)
+						.then(response => {
+							if (response.status == 200) {
+								return response.body.getReader().read()
+							} else {
+								reject(response)
+							}
+						})
+						.then(({ value, done }) => {
+							const text = new TextDecoder().decode(value);
+							const body = JSON.parse(text);
+							// console.log(body);
+							resolve(body)
+						})
+			});
+		}).catch(e=>{
+			if(e.status){
+				return new Promise((resolve, reject) => {
+					reject(e)
+				});
+			}else{
+				return  this.__fetch('POST',path,'',time,params,body)
+			}
+		})
+	},
     post : function(path,body,parms){
         let time = new Date().getTime()
         if(parms==undefined)parms={}
