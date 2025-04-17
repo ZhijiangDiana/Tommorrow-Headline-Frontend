@@ -23,7 +23,7 @@
         <el-table-column label="序号" type="index" width="50"></el-table-column>
         <el-table-column label="姓名">
           <template slot-scope="scope">
-            <span>{{ scope.row.name }}</span>
+            <span>{{ scope.row.realName }}</span>
           </template>
         </el-table-column>
         <el-table-column label="身份证号">
@@ -123,6 +123,7 @@ export default {
         query: {
           id: row.id,
           name: row.name,
+          realName: row.realName,
           idno: row.idno,
           fontImage: row.fontImage,
           backImage: row.backImage,

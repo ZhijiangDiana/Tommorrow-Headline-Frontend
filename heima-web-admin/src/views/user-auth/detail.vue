@@ -30,8 +30,12 @@
     <div class="main">
       <el-row :gutter="30">
         <el-col :span="4">
-          <span class="name">姓名</span>
+          <span class="name">用户名</span>
           <span class="value">{{ realname.name }}</span>
+        </el-col>
+        <el-col :span="4">
+          <span class="name">姓名</span>
+          <span class="value">{{ realname.realName }}</span>
         </el-col>
         <el-col :span="20">
           <span class="name">身份证号</span>
