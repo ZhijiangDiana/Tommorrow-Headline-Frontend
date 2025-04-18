@@ -254,7 +254,33 @@ Api.prototype = {
             reject(e)
             })
         })
-    }
+    },
+	startRead: function (articleId) {
+		let url = this.vue.$config.urls.get('start_read')
+		return new Promise((resolve, reject) => {
+			this.vue.$request
+					.post(url, { articleId: articleId })
+					.then((d) => {
+						resolve(d)
+					})
+					.catch((e) => {
+						reject(e)
+					})
+		})
+	},
+	endRead: function (articleId) {
+		let url = this.vue.$config.urls.get('end_read')
+		return new Promise((resolve, reject) => {
+			this.vue.$request
+					.post(url, { articleId: articleId })
+					.then((d) => {
+						resolve(d)
+					})
+					.catch((e) => {
+						reject(e)
+					})
+		})
+	}
 }
 
 export default new Api()

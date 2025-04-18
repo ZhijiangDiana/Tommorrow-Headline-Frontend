@@ -37,6 +37,8 @@ const  config = {
         share_behavior:{url:'behavior/api/v1/share_behavior/',sv:'app'},
         unlike_behavior:{url:'behavior/api/v1/unlike_behavior/',sv:'app'},
         collection_behavior:{url:'article/api/v1/collection_behavior/',sv:'app'},
+			start_read: {url:'behavior/api/v1/start_read',sv:'app'},
+			end_read: {url:'behavior/api/v1/end_read',sv:'app'},
         // ==========  user
         user_follow:{url:'user/api/v1/user/user_follow/',sv:'app'},
         // ==========  login
