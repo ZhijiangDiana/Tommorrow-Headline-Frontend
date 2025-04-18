@@ -43,6 +43,7 @@
 <script>
     import Api from '@/apis/login/api'
     import TopBar from '@/compoents/bars/login_top_bar'
+    import Vue from "vue";
     const modal = weex.requireModule('modal')
     export default {
         name: "login",
@@ -54,11 +55,21 @@
                 params:{
                     phone:'13511223456',
                     password:'admin'
-                }
+                },
             }
         },
         created(){
             Api.setVue(this);
+          Promise.all([this.$store.getPhone(), this.$store.getPassword()])
+          .then(([phone, password]) => {
+            if (phone && password) {
+              this.params.phone = phone
+              this.params.password = password
+              this.login()
+            }
+          }).catch((err) => {
+            console.log(err)
+          })
         },
         methods:{
             tip : function(){
@@ -74,8 +85,13 @@
                     Api.login(this.params).then(d=>{
                         if(d.code==200){
                             this.$store.setToken(d.data.token)
+                          this.$store.setPhone(this.params.phone)
+                          this.$store.setPassword(this.params.password)
                             this.$router.push("/home")
                         }else{
+                          this.$store.deletePhone()
+                          this.$store.deletePassword()
+                          this.$store.deleteToken()
                             modal.toast({ message:d.errorMessage,duration:3})
                         }
                     }).catch(e=>{

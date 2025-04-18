@@ -57,7 +57,7 @@
       <div class="menu-item" @click="goTo(1001)">实名认证 ></div>
       <div class="menu-item" @click="goTo(1002)">私信 ></div>
       <div class="menu-item" @click="goTo(1003)">用户反馈 ></div>
-      <div class="menu-item" @click="goTo(1004)">系统设置 ></div>
+      <div class="menu-item" @click="goTo(1004)">退出登录 ></div>
     </div>
   </div>
 </template>
@@ -67,6 +67,7 @@ import WxcTabPage from "@/compoents/tabs/home_tabs.vue";
 import {Utils} from "weex-ui";
 import config from './config';
 import Api from "@/apis/my_personal/api";
+const modal = weex.requireModule('modal')
 
 export default {
   components: {WxcTabPage},
@@ -88,7 +89,7 @@ export default {
   },
   created() {
     this.tabPageHeight = Utils.env.getScreenHeight()-132;
-    console.log("tabPageHeight: ",this.tabPageHeight)
+    // console.log("tabPageHeight: ",this.tabPageHeight)
 
     Api.setVue(this);
     this.getUserInfo()
@@ -96,7 +97,7 @@ export default {
   methods: {
     getUserInfo() {
       Api.loaduserinfo().then((d)=>{
-        console.log(JSON.stringify(d))
+        // console.log(JSON.stringify(d))
         this.user = d.data
         this.isVerifiedStr = this.user.verified ? "已实名" : "未实名"
       }).catch((e)=>{
@@ -116,10 +117,22 @@ export default {
             type: page === 10 ? 0 : 1
           }
         })
+      } else if (page === 1004) {
+        this.logout()
       } else {
         this.$router.push(url)
       }
     },
+    logout() {
+      Promise.all([this.$store.deletePhone(), this.$store.deletePassword(), this.$store.deleteToken()])
+          .then(() => {
+            modal.toast({ message:'已退出登录', duration:3})
+            this.$router.push("/login")
+          }).catch((e) => {
+            console.log(e)
+            modal.toast({ message:'退出失败', duration:3})
+          })
+    }
   }
 };
 </script>
