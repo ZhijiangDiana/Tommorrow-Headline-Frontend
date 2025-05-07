@@ -65,6 +65,8 @@ const  config = {
 			get_realname_status: {url:'user/api/v1/realname/getStatus',sv:'app'},
 			restart_realname: {url:'user/api/v1/realname/restart',sv:'app'},
 			submit_realname: {url:'user/api/v1/realname/submit',sv:'app'},
+			// ==========  profile
+			update_profile: {url:'user/api/v1/profile/updateProfile/',sv:'app'},
 
         // 解决多访问地址的问题
         getBase : function(url){

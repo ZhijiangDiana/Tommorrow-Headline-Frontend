@@ -10261,6 +10261,18 @@ void-elements@^2.0.0:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha512-qZKX4RnBzH2ugr8Lxa7x+0V6XD9Sb/ouARtiasEQCHB1EVU4NXtmHsDDrx1dO4ne5fc3J6EW05BP1Dl0z0iung==
 
+vue-cropper-h5@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.npmmirror.com/vue-cropper-h5/-/vue-cropper-h5-1.2.5.tgz#66dde7686dccc1f53c2314e6d87b8e63deebe7ae"
+  integrity sha512-Kvrr/Fp2NbLswMffI9g7XOvARnxzSxhu5QikVwwAIn3CotlhnHJJ4TWxp78Hy33BicrdLLk/GEgKQviurTv/YQ==
+  dependencies:
+    vue "^2.6.11"
+    vue-cropper "git+https://gitee.com/JuLizhanzhan/vue-cropper#master"
+
+"vue-cropper@git+https://gitee.com/JuLizhanzhan/vue-cropper#master":
+  version "0.5.5"
+  resolved "git+https://gitee.com/JuLizhanzhan/vue-cropper#06f7433e641fd00abcfc877dbcf76eab56817083"
+
 vue-hot-reload-api@^2.0.1, vue-hot-reload-api@^2.1.0:
   version "2.3.4"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -10311,7 +10323,7 @@ vue-template-es2015-compiler@^1.2.2, vue-template-es2015-compiler@^1.6.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.5.11:
+vue@^2.5.11, vue@^2.6.11:
   version "2.7.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.7.16.tgz#98c60de9def99c0e3da8dae59b304ead43b967c9"
   integrity sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==

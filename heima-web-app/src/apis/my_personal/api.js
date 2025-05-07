@@ -121,6 +121,18 @@ Api.prototype = {
 				})
 			})
 		})
+	},
+	updateProfile : function(data){
+		let url = this.vue.$config.urls.get('update_profile')
+		return this.vue.$store.getEquipmentId().then(equipmentId => {
+			return new Promise((resolve, reject) => {
+				this.vue.$request.post(url,data).then((d)=>{
+					resolve(d);
+				}).catch((e)=>{
+					reject(e);
+				})
+			})
+		})
 	}
 }
 

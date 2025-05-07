@@ -1,10 +1,15 @@
 <template>
-  <div class="container" @touchmove.stop :style="{ height: (tabPageHeight)+'px' }">
+  <div class="container" :style="{ height: (tabPageHeight)+'px' }">
     <!-- 顶部用户信息 -->
     <div class="header">
       <!-- 左侧头像和用户信息 -->
       <div class="user-info">
-        <img class="avatar" :src="user.avatar" />
+<!--        <img class="avatar" :src="user.avatar" />-->
+        <div class="cropper">
+          <H5Cropper ref="cropper" :hideInput="true" :option="option" class="avatar"
+                     @get-file="handleCroppedFile" @canceltailor="handleCancelCrop"/>
+          <img class="avatar" :src="user.avatar" @click="chooseImage"/>
+        </div>
         <div class="info">
           <div class="name">{{ user.name }}</div>
           <div class="badge" v-if="user.verified">{{ isVerifiedStr }}</div>
@@ -67,10 +72,11 @@ import WxcTabPage from "@/compoents/tabs/home_tabs.vue";
 import {Utils} from "weex-ui";
 import config from './config';
 import Api from "@/apis/my_personal/api";
+import H5Cropper from "vue-cropper-h5";
 const modal = weex.requireModule('modal')
 
 export default {
-  components: {WxcTabPage},
+  components: {WxcTabPage, H5Cropper},
   data() {
     return {
       route: config.nextPage,
@@ -84,7 +90,18 @@ export default {
         posts: 1145,
         following: 1145,
         followers: 1145,
-      }
+      },
+      profile: {
+        name: null,
+        phone: null,
+        image: null,
+        email: null,
+        description: null,
+        sex: null
+      },
+      option: {
+
+      }, //配置
     };
   },
   created() {
@@ -95,6 +112,57 @@ export default {
     this.getUserInfo()
   },
   methods: {
+    chooseImage() {
+      console.log("选择图片")
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = "image/jpeg, image/png"
+      input.onchange = (event) => {
+        const file = event.target.files[0];
+        this.$refs.cropper.value = null; // 清空选择值，避免相同文件无法再次触发 change
+
+        if (file) {
+          this.$refs.cropper.loadFile(file);
+        }
+      }
+      input.click()
+    },
+    handleCancelCrop() {
+      console.log("用户取消了裁剪");
+    },
+    handleCroppedFile(file){
+      // console.log("file")
+      // console.log(file)
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.user.avatar = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        const fd = new FormData()
+        fd.append('multipartFile', file, file.name)
+
+        Api.uploadImage(fd).then((result) => {
+          if (result.code == 200) {
+            this.profile.image = result.data;
+            // console.log(this.profile.image);
+            this.updateUserAvatar()
+          } else {
+            modal.toast({ message: result.errorMessage, duration:3})
+          }
+        }).catch((e)=>{
+          modal.toast({ message: e.message, duration:3})
+        })
+      }
+    },
+    updateUserAvatar() {
+      Api.updateProfile(this.profile).then((result) => {
+        modal.toast({ message: result.errorMessage, duration:3})
+      }).catch((e) => {
+        modal.toast({ message: e.message, duration:3})
+      })
+    },
     getUserInfo() {
       Api.loaduserinfo().then((d)=>{
         // console.log(JSON.stringify(d))
@@ -163,9 +231,20 @@ export default {
 }
 
 .avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin-right: 20px;
+  position: absolute;
+}
+
+.cropper {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
+  /* 切记position: relative一点要有 */
+  position: relative;
+  overflow: hidden;
+  text-align: center;
   margin-right: 20px;
 }
 
