@@ -9,9 +9,10 @@
         name: "load_screen",
         created() {
             let _this = this
-            setTimeout(function(){
-               _this.goLogin()
-            },2000)
+            setTimeout(function() {
+              _this.goLogin()
+              // },2000)
+            }, 0)
         },
         methods : {
             goLogin : function () {

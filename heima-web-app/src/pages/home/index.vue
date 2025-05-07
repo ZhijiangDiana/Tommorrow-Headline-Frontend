@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper" @touchmove.stop>
-    <div class="top-body" @touchmove.stop><Home_Bar/></div>
+    <div class="top-body"><Home_Bar/></div>
     <div class="content-body" @touchmove.stop>
       <wxc-tab-page ref="wxc-tab-page" :tab-titles="tabTitles" :tab-styles="tabStyles" title-type="text" :tab-page-height="tabPageHeight" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
-        <list v-for="(v,index) in tabList" :key="index" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height-12) + 'px' }">
+        <list @touchmove.self v-for="(v,index) in tabList" :key="index" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height-12) + 'px' }">
           <!-- 下来刷新最新 -->
           <refresh @refresh='loadnew'  :display="shownew?'show':'hide'" class="loading">
             <loading-indicator class="loading-icon"></loading-indicator>
