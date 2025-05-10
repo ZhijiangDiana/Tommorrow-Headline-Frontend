@@ -1,7 +1,7 @@
 <template>
     <div class="cell-body" @click="onClick">
         <text class="title">{{title}}</text>
-        <text class="icon" :style="{'backgroundColor':getColor()}" v-if="tip!=''||type!=''">{{getText()}}</text>
+        <text class="icon" :style="{'backgroundColor':getColor()}">{{getText()}}</text>
     </div>
 </template>
 
@@ -18,7 +18,7 @@
                 default:''
             },
             type:{
-                type:String,
+                type:Number,
                 default:''
             }
         },

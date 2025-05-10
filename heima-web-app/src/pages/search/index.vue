@@ -13,7 +13,7 @@
                 <template v-for="item in data.hot">
                     <div class="item">
                         <template v-for="k in item">
-                            <HotCell @onClick="doSearch" :title="k.hot_words" type="k.type"/>
+                            <HotCell @onClick="doSearch" :title="k.searchWord" :type="k.type"/>
                         </template>
                     </div>
                 </template>
@@ -33,21 +33,21 @@
 <!--                    <HotCell title="长宁4.8级地震" tip="热"/>-->
 <!--                </div>-->
 <!--            </div>-->
-            <Title title="大家都在搜" :icon="icon.other"/>
-            <div class="hot-body">
-                <div class="item">
-                    <HotCell title="长宁4.8级地震" tip="精"/>
-                    <HotCell title="长宁4.8级地震"/>
-                </div>
-                <div class="item">
-                    <HotCell title="长宁4.8级地震" tip="荐"/>
-                    <HotCell title="长宁4.8级地震"/>
-                </div>
-                <div class="item">
-                    <HotCell title="长宁4.8级地震"/>
-                    <HotCell title="长宁4.8级地震" tip="热"/>
-                </div>
-            </div>
+<!--            <Title title="大家都在搜" :icon="icon.other"/>-->
+<!--            <div class="hot-body">-->
+<!--                <div class="item">-->
+<!--                    <HotCell title="长宁4.8级地震" tip="精"/>-->
+<!--                    <HotCell title="长宁4.8级地震"/>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <HotCell title="长宁4.8级地震" tip="荐"/>-->
+<!--                    <HotCell title="长宁4.8级地震"/>-->
+<!--                </div>-->
+<!--                <div class="item">-->
+<!--                    <HotCell title="长宁4.8级地震"/>-->
+<!--                    <HotCell title="长宁4.8级地震" tip="热"/>-->
+<!--                </div>-->
+<!--            </div>-->
         </scroller>
         <div class="art-tip" v-if="showTip" ref="tip"><SearchTip @onSelect="doSearch" :search="data.keyword" :data="data.tip"/></div>
     </div>
@@ -111,23 +111,36 @@
             // 删除历史搜搜关键字
             onDeleteHistory : function(id){
                 let _this = this;
-                modal.confirm({message:'确认要删除吗？'},function(button) {
-                    if(button=='OK') {
-                        Api.del_search(id).then(data => {
-                            if (data.code == 200) {
-                                modal.toast({message: '删除成功', duration: 3})
-                                _this.load_search_history()
-                            }else  if (data.code == 0) {
-                                modal.toast({message: '删除成功', duration: 3})
-                                _this.load_search_history()
-                            }  else {
-                                modal.toast({message: data.errorMessage, duration: 3})
-                            }
-                        }).catch((e) => {
-                            console.log(e)
-                        })
-                    }
-                })
+                // modal.confirm({message:'确认要删除吗？'},function(button) {
+                //     if(button=='OK') {
+                //         Api.del_search(id).then(data => {
+                //             if (data.code == 200) {
+                //                 modal.toast({message: '删除成功', duration: 3})
+                //                 _this.load_search_history()
+                //             }else  if (data.code == 0) {
+                //                 modal.toast({message: '删除成功', duration: 3})
+                //                 _this.load_search_history()
+                //             }  else {
+                //                 modal.toast({message: data.errorMessage, duration: 3})
+                //             }
+                //         }).catch((e) => {
+                //             console.log(e)
+                //         })
+                //     }
+                // })
+              Api.del_search(id).then(data => {
+                if (data.code == 200) {
+                  // modal.toast({message: '删除成功', duration: 3})
+                  _this.load_search_history()
+                }else  if (data.code == 0) {
+                  // modal.toast({message: '删除成功', duration: 3})
+                  _this.load_search_history()
+                }  else {
+                  modal.toast({message: data.errorMessage, duration: 3})
+                }
+              }).catch((e) => {
+                console.log(e)
+              })
             },
             //用户输入时，提示联想词
             onInput : function(val){
@@ -146,6 +159,7 @@
             // 加载热搜关键字
             load_hot_keywords : function(){
                 Api.load_hot_keywords().then(data=>{
+                  console.log(data.data)
                     if(data.code==200){
                         // 需要转换数据格式
                         let newData=[]
@@ -158,6 +172,7 @@
                             temp.push(data.data[i])
                         }
                         this.data.hot = newData
+                      console.log(this.data.hot)
                     }else{
                         modal.toast({message: data.errorMessage,duration: 3})
                     }
