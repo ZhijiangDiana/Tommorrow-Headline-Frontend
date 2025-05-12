@@ -11,7 +11,7 @@ export default {
   name: 'HeiMa-App',
   created () {
     util.initIconFont();
-    document.title='黑马头条'
+    document.title='明日头条'
   }
 }
 </script>

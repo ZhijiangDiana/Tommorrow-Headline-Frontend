@@ -3,7 +3,7 @@
     <div class="login-box clearfix">
       <div class="inline-block welcome-box fl">
         <div class="welcome">欢迎使用</div>
-        <div class="project">黑马头条自媒体人管理系统</div>
+        <div class="project">明日头条自媒体人管理系统</div>
         <img class="block img" src="@/assets/login/welcome@2x.png" />
       </div>
       <div class="inline-block form-box fr">

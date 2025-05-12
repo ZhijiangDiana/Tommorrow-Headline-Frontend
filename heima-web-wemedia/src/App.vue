@@ -8,7 +8,7 @@
 <script>
 export default {
   mounted () {
-    document.title = '欢迎登录-黑马头条自媒体管理系统'
+    document.title = '欢迎登录-明日头条自媒体管理系统'
   }
 }
 </script>

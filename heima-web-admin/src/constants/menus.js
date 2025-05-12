@@ -22,7 +22,7 @@ export const MenuData = [
     title: '内容管理',
     path: '/news-published/index',
     icon: 'iconicon_menu_neirong_nor',
-    disabled: false
+    disabled: true
   },
   {
     title: '敏感词设置',
