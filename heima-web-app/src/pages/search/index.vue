@@ -78,11 +78,13 @@
                     history : [],//搜索历史
                     tip : [],// 联想词
                     hot : []//热搜关键字
-                }
+                },
+              pageHeight: Utils.env.getPageHeight()
             }
         },
         created(){
             Api.setVue(this)
+          console.log(`search page height: ${this.pageHeight}`)
         },
         mounted(){
             this.scrollerHeight=(Utils.env.getPageHeight()-180)+'px';
@@ -91,7 +93,8 @@
         },
         methods:{
             doSearch : function(val){
-                this.$router.push({name:'search_result',params:{'keyword':val}})
+              console.log(this.pageHeight)
+                this.$router.push({name:'search_result',params:{'keyword':val, 'pageHeight': this.pageHeight}})
             },
             // 加载搜索历史
             load_search_history : function(){

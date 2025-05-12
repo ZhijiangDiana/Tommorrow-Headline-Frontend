@@ -38,7 +38,8 @@
         name: 'HeiMa-Home',
         components: {Home_Bar,WxcTabPage, Item0,Item1,Item3,WxcPanItem},
         props:{
-            keyword:''//当前搜索的关键字
+            keyword:'',  //当前搜索的关键字
+          pageHeight: ''
         },
         data: () => ({
             api:null,// API
@@ -70,7 +71,17 @@
         },
         created () {
             // 初始化高度，顶部菜单高度120+顶部bar 90
+            // this.tabPageHeight = Utils.env.getPageHeight()-110;
+
+          this.tabPageHeight = this.pageHeight
+          // console.log(`tabPageHeight: ${this.tabPageHeight}`)
+          if (this.tabPageHeight)
+            this.tabPageHeight -= 110
+          else
             this.tabPageHeight = Utils.env.getPageHeight()-110;
+          // console.log(`pageHeight: ${Utils.env.getPageHeight()}`)
+          // console.log(`tabPageHeight: ${this.tabPageHeight}`)
+
             this.params.keyword = this.keyword;
             Api.setVue(this);
 

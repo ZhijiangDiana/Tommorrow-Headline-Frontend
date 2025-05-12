@@ -20,7 +20,7 @@
             </wxc-pan-item>
           </cell>
           <!-- 上来加载更多 -->
-          <loading @loading="loadmore" :display="showmore?'show':'hide'" class="loading">
+          <loading @loading="loadmore" :display="getShowMore?'show':'hide'" class="loading">
             <loading-indicator class="loading-icon"></loading-indicator>
             <text class="loading-text">{{load_more_text}}</text>
           </loading>
@@ -71,7 +71,11 @@
     computed:{
       // 渲染加载最新和更多的国际化语言
       load_new_text:function(){return this.$lang.load_new_text},
-      load_more_text:function(){return this.$lang.load_more_text}
+      load_more_text:function(){return this.$lang.load_more_text},
+      getShowMore:function(){
+        console.log(this.showmore)
+        return this.showmore
+      }
     },
     mounted(){
       // 激活推荐按钮
