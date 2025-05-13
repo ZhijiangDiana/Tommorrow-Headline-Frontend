@@ -13,6 +13,7 @@ import History from "@/pages/my-personal/history/history.vue";
 import Star from "@/pages/my-personal/star/star.vue";
 import RegisterPage from "@/pages/login/register/register-page.vue";
 import Realname from "@/pages/my-personal/realname/realname.vue";
+import Page404 from "@/pages/page-404.vue";
 
 let routes = [
     {
@@ -76,6 +77,9 @@ let routes = [
 		path: "/my-personal/realname",
 		name: 'realname',
 		component: Realname
+	},{
+		path: '*',
+		component: Page404
 	}
 ]
 

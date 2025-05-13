@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <div class="logo">
-      <img width="151" src="@/assets/index/img_logo_media@2x.png" alt />
+      <img width="200" src="@/assets/index/img_logo_media@2x.png" alt />
     </div>
     <el-menu class="sidebar-el-menu" :default-active="defaultRoute" router :collapse="collapse">
       <sidebar-item v-for="route in items" :item="route" :key="route.path" />

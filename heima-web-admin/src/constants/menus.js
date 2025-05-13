@@ -18,12 +18,12 @@ export const MenuData = [
     icon: 'iconicon_menu_neirongshenhe_nor',
     disabled: false
   },
-  {
-    title: '内容管理',
-    path: '/news-published/index',
-    icon: 'iconicon_menu_neirong_nor',
-    disabled: true
-  },
+  // {
+  //   title: '内容管理',
+  //   path: '/news-published/index',
+  //   icon: 'iconicon_menu_neirong_nor',
+  //   disabled: false
+  // },
   {
     title: '敏感词设置',
     path: '/sensitive/index',

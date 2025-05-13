@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     userName () {
-      return this.user.name ? this.user.name : '未登录'
+      return this.user.name ? this.user.name : 'admin'
     },
     headImg () {
       return this.user.photo ? this.user.photo : require('@/assets/index/img_touxiang@2x.png')

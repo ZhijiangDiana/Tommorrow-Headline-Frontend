@@ -207,6 +207,7 @@
         }
         newList[this.params.index] = arr;
         this.tabList = newList;
+        console.log(this.tabList)
         this.showmore=false;
         this.shownew=false;
       },

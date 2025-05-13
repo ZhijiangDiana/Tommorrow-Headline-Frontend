@@ -156,9 +156,9 @@ export default {
       border-radius: 0px 18px 18px 0px;
 
       .heima-img {
-        width: 172px;
-        height: 48px;
-        margin: 69px auto 0;
+        width: 234px;
+        height: 60px;
+        margin: 86px auto 0;
       }
 
       .login-form {

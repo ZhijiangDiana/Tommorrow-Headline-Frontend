@@ -12,7 +12,7 @@
             </div>
             <div class="item-r">
                 <!-- <image class="image" :src="formatImage(data.image[0])"/> -->
-                <image class="image" :src="formatImage(data.image[0])"/>
+                <image class="image" :src="formatImage(data.image[0])" resize="cover"/>
             </div>
         </div>
     </div>
