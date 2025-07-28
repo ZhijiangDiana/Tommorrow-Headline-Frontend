@@ -44,3 +44,7 @@ export function getUser () {
 export function clearUser () {
   clearStore(USER_KEY)
 }
+
+export function initStore () {
+	return undefined
+}
